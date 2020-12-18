@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 import bs4
 import re
+import generate_report
+import datetime
 
 def read_webpage_contents(file_path):
     with open(file_path, "r") as f:
         contents = f.read()
         return contents
 
-def get_dict_items(file_path):
+def get_dict_items(file_path, account_name):
     
     page_contents = read_webpage_contents(file_path)
 
@@ -53,4 +55,14 @@ def get_dict_items(file_path):
     return item_dict
 
 if __name__ == "__main__":
-    get_dict_items("webpage_contents.html")
+
+    sample_username = "romnegrillo"
+    file_title = "Summary of your Shopee Orders"
+    date_generated = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    file_name = "shopee-summary-" + date_generated.replace(" ", "-").replace("/","-").replace(":","-").replace(",","-") + ".pdf"
+    file_description = "Account of: {}\nGenerated on: {}".format(sample_username,date_generated)
+
+    item_info = get_dict_items("webpage_contents.html", sample_username)
+
+   
+    generate_report.generate_report_from_dict(file_name, file_title, file_description, item_info)

@@ -8,6 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 import getpass
+import datetime
+import os
 
 # Adding geckodriver to path temporarily.
 # Works in Linux 64 bit only for now.
@@ -15,15 +17,17 @@ import set_geckodriver_path
 set_geckodriver_path.add_geckodriver_to_PATH()
 
 import scrape_webpage_contents
+import generate_report
 
-"""
-This program automates login in the website shopee.ph 
-by automatically entering the email, password and verfication 
-that is provided by the user in the commandline.
+message = """
+This program will generate a report of all the items you bought in Shopee.
+I don't save any userdata in this program. I just automated the process.
 
+You just provide the username/email, password and the OTP then the program
+will automatically parse out all the information needed.
 
-I've moved further development to a new repository because it can be useful. This is just a sample 
-snippets to login, navigate through buttons and scroll through the page.
+Rom Negrillo
+github.com/romnegrillo
 """
 
 def login(username_email, password, driver):
@@ -117,14 +121,17 @@ def clear_screen():
     Prints newline 100 times to behave like a clear screen.
     """
     print(100*"\n")
+    os.system("clear")
 
 def main():
 
     clear_screen()
 
+    print(message)
+
     # Creates an option for how the browser behaves. 
     opts = Options()
-    #opts.set_headless()
+    opts.headless = True
     #assert opts.headless   
     
     # Creates firefox webdriver.
@@ -160,9 +167,24 @@ def main():
             webpage_save_name = "webpage_contents.html"
             save_webpage(driver, webpage_save_name)
 
-            item_info_dict = scrape_webpage_contents.get_dict_items(webpage_save_name)
-            print(item_info_dict)
+            item_info = scrape_webpage_contents.get_dict_items(webpage_save_name, username_email)
+            #print(item_info_dict)
 
+        
+            file_title = "Summary of your Shopee Orders"
+            date_generated = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+
+            file_name = "shopee-summary-" + date_generated.replace(" ", "-").replace("/","-").replace(":","-").replace(",","-") + ".pdf"
+            file_name = os.path.join("generated_reports", file_name)
+
+            file_description = "Account of: {}\nGenerated on: {}".format(username_email,date_generated)
+
+        
+            generate_report.generate_report_from_dict(file_name, file_title, file_description, item_info)
+
+            print("PDF summary generated.")
+        
+         
         else:
             print("Invalid credentials.")
 
@@ -173,7 +195,7 @@ def main():
 
     finally:
         print("Program ended.")
-        input("Press enter to exit.")
+        #input("Press enter to exit.")
         driver.close()
 
 
