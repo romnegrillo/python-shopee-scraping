@@ -1,0 +1,27 @@
+1608264102891	geckodriver	INFO	Listening on 127.0.0.1:38089
+1608264102896	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilesi2RaO"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608264104634	Marionette	INFO	Listening on port 42997
+1608264104722	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608264187986	Marionette	INFO	Stopped listening on port 42997
+1608271866744	geckodriver	INFO	Listening on 127.0.0.1:38789
+1608271867700	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile2Vyo8v"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608271869501	Marionette	INFO	Listening on port 44069
+1608271869532	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608271928541	Marionette	INFO	Stopped listening on port 44069
+1608271935445	geckodriver	INFO	Listening on 127.0.0.1:41069
+1608271935449	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilex1hu8Q"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608271937145	Marionette	INFO	Listening on port 38861
+1608271937170	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1608272129654	geckodriver	INFO	Listening on 127.0.0.1:34523
+1608272129658	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileUVH1Yy"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608272131397	Marionette	INFO	Listening on port 39883
+1608272131482	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1608272439640	Marionette	INFO	Stopped listening on port 39883
