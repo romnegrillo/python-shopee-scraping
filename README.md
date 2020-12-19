@@ -23,7 +23,7 @@ Shopee account.
 ### Hot to Use - Linux
 Open the terminal and change directory to this folder then
 execute the following commands:
-*cd release/linux/dist/main
-* ./main
+* ```cd release/linux/dist/main```
+*  ```./main```
 The program will then ask for your email/username, password and OTP sent in your
 mobile then the report will generated on a folder named "reports_generated" on your Desktop.
