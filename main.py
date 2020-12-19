@@ -21,11 +21,21 @@ import scrape_webpage_contents
 import generate_report
 
 message = """
-This program will generate a report of all the items you bought in Shopee.
-I don't save any userdata in this program. I just automated the process.
+About:
+This program will generate a PDF report of all the items you bought in Shopee,
+including its name and price in tablular format, and the total money you spent 
+in the platform.
 
-You just provide the username/email, password and the OTP then the program
-will automatically parse out all the information needed.
+As of now, it allows you to enter username/email, password, and OTP sent from 
+your phone using the command line, then the report will be generated.
+
+Warning: Using it multiple times consecutively will block your account by a certain minutes. 
+This is a security feature in Shopee when you try to send OTP too many times.
+
+Disclaimer:
+I do not save any personal info you will enter in this program. I just used the 3rd party 
+Python modules to automate the process. I'm not responsible for any trouble you may 
+face when using this script. I tested this using my own Shopee account.
 
 Rom Negrillo
 github.com/romnegrillo
@@ -92,7 +102,7 @@ def scroll_down_until_end(driver):
     This function simply scrolls down the page until there is no more room to scroll.
     
     """
-    SCROLL_PAUSE_TIME = 0.5
+    SCROLL_PAUSE_TIME = 1
 
     # Get scroll height
     last_height = driver.execute_script("return document.body.scrollHeight")
@@ -177,6 +187,7 @@ def main():
 
             # Perform scroll downs to load all puchased item so we can parse it.
             print("Parsing all items bought, please wait...")
+            print("This may take a while depending on your purchased history list...")
             scroll_down_until_end(driver)
             print("All items retrived, summarizing it, please wait...")
 
@@ -198,8 +209,16 @@ def main():
             # File name will be in the format: shopee-summary-mm-dd-yy-hh-mm-ss.pdf
             file_name = "shopee-summary-" + date_generated.replace(" ", "-").replace("/","-").replace(":","-").replace(",","-") + ".pdf"
 
-            # Get relative path in the  folder generated_reports
-            file_name = os.path.join("generated_reports", file_name)
+            # Get desktop path, add a folder named generated_reports if it does not exists
+            # then create an absolute filename path to save the generated PDF.
+            desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+            folder_path = os.path.join(desktop_path, "generated_reports")
+
+            if not os.path.exists(folder_path):
+                os.mkdir(folder_path)
+
+            # Modify file_name variable to be absolute file path. 
+            file_name = os.path.join(folder_path, file_name)
 
             # Compute total money spent by iterating in the dictionary of dictionary.
             total_money_spent = sum([float(val["price"]) for key, val in item_info.items()])
