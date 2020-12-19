@@ -9,7 +9,6 @@ from reportlab.lib.units import inch
 
 def generate_report_from_dict(flename, title, description, contents_dict):
     
-
     report = SimpleDocTemplate(flename, pagesize=letter)
     flow_tables = []
     styles = getSampleStyleSheet()
@@ -45,14 +44,14 @@ def generate_report_from_dict(flename, title, description, contents_dict):
 
     report.build(flow_tables)
 
-
 def main():
+
+    # Sample test only.
 
     sample_dict = {
         1:{"name": "Name 01", "price": "Value 01"},
         2:{"name": "Name 02", "price": "Value 02"},
         3:{"name": "Name 03", "price": "Value 03"},
-    
     }
     generate_report_from_dict("sample.pdf", "My Title", "Sample description.", sample_dict)
 

@@ -56,13 +56,16 @@ def get_dict_items(file_path, account_name):
 
 if __name__ == "__main__":
 
+    # Sample test only.
+
     sample_username = "romnegrillo"
     file_title = "Summary of your Shopee Orders"
     date_generated = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     file_name = "shopee-summary-" + date_generated.replace(" ", "-").replace("/","-").replace(":","-").replace(",","-") + ".pdf"
-    file_description = "Account of: {}\nGenerated on: {}".format(sample_username,date_generated)
-
+    
     item_info = get_dict_items("webpage_contents.html", sample_username)
+    total_money_spent = sum([float(val["price"]) for key, val in item_info.items()])
 
+    file_description = "Account of: {}\nGenerated on: {}\n Total Money Spent on Shopee: {:,.2f}".format(sample_username, date_generated, total_money_spent)
    
     generate_report.generate_report_from_dict(file_name, file_title, file_description, item_info)

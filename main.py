@@ -10,6 +10,7 @@ import time
 import getpass
 import datetime
 import os
+import sys
 
 # Adding geckodriver to path temporarily.
 # Works in Linux 64 bit only for now.
@@ -28,6 +29,8 @@ will automatically parse out all the information needed.
 
 Rom Negrillo
 github.com/romnegrillo
+
+Loading please wait...
 """
 
 def login(username_email, password, driver):
@@ -123,6 +126,10 @@ def clear_screen():
     print(100*"\n")
     os.system("clear")
 
+def flush_stdin():
+    # TODO
+    pass
+
 def main():
 
     clear_screen()
@@ -141,15 +148,25 @@ def main():
     driver.get("https://shopee.ph/buyer/login")
 
     try:
-        username_email = input("Enter your email address or username: ")
-        password = getpass.getpass("Enter your password (it won't appear in the terminal): ")
+
+        flush_stdin()
+
+        print("Enter your email address or username:")
+        username_email = input("> ")
+
+        print("Enter your password (it won't appear in the terminal):")
+        password = getpass.getpass("> ")
 
         # Login to Shopee.
         if login(username_email, password, driver):
             
             # If login success, mobile verification is required.
-            mobile_verification_number = input("Enter verification code sent in your mobile number: ")
+            print("Enter verification code sent in your mobile number:")
+            mobile_verification_number = input("> ")
+
+            print("Verifying OTP...")
             mobile_verification(mobile_verification_number, driver)
+            print("OTP correct, please wait...")
 
             # If mobile verification in success, the username navbar in the Shopee website should be present.
             # We wait for it to be present via div element with attribute name  "navbar__username" then we click it.
@@ -159,32 +176,40 @@ def main():
             driver.get("https://shopee.ph/user/purchase/")
 
             # Perform scroll downs to load all puchased item so we can parse it.
+            print("Parsing all items bought, please wait...")
             scroll_down_until_end(driver)
+            print("All items retrived, summarizing it, please wait...")
 
             # If the scroll is success, at this point we have now the page of Shopee with all the items
-            # bought. We can scrape it.
+            # bought. Save it as webpage_contents.html then we can scrape it.
             time.sleep(1)
             webpage_save_name = "webpage_contents.html"
             save_webpage(driver, webpage_save_name)
 
+            # Get dictionary of items we bought in Shopee in the format:
+            # { 1: {"name": "Sample Name", "price": 100}, 2: {"name": "Sample Name", "price": 100} ...}
             item_info = scrape_webpage_contents.get_dict_items(webpage_save_name, username_email)
             #print(item_info_dict)
 
-        
+            # Information for PDF generation
             file_title = "Summary of your Shopee Orders"
             date_generated = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
 
+            # File name will be in the format: shopee-summary-mm-dd-yy-hh-mm-ss.pdf
             file_name = "shopee-summary-" + date_generated.replace(" ", "-").replace("/","-").replace(":","-").replace(",","-") + ".pdf"
+
+            # Get relative path in the  folder generated_reports
             file_name = os.path.join("generated_reports", file_name)
 
-            file_description = "Account of: {}\nGenerated on: {}".format(username_email,date_generated)
+            # Compute total money spent by iterating in the dictionary of dictionary.
+            total_money_spent = sum([float(val["price"]) for key, val in item_info.items()])
+ 
+            file_description = "Account of: {}\nGenerated on: {}\n Total Money Spent on Shopee: {:,.2f} PHP".format(username_email, date_generated, total_money_spent)
 
-        
-            generate_report.generate_report_from_dict(file_name, file_title, file_description, item_info)
-
-            print("PDF summary generated.")
-        
-         
+            # Generates a PDF report.
+            print("Generating PDF report...")
+            generate_report.generate_report_from_dict(file_name, file_title, file_description, item_info) 
+            print("PDF report generated at {}".format(file_name))
         else:
             print("Invalid credentials.")
 
