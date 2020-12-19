@@ -20,7 +20,7 @@ the 3rd party Python modules to automate the process. I'm not responsible for
 any trouble you may face when using this script. I tested this using my own
 Shopee account. 
 
-### Hot to Use - Linux
+### How to Use - Linux
 Open the terminal and change directory to this folder then
 execute the following commands:
 * ```cd release/linux/dist/main```
