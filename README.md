@@ -3,6 +3,8 @@
 ### About
 This repository contains Python automation programs to web scrape shopee.ph 
 and gather information about the items you purchased in your Shopee account. 
+Note, the link is  shopee.ph. I have not tested it in another shopee website
+of another country.
 
 This program will generate a PDF report of all the items you bought in Shopee,
 including its name and price in tablular format, and the total money you spent 
