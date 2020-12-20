@@ -12,7 +12,7 @@ import datetime
 import os
 import sys
 
-# Adding geckodriver to path temporarily.
+# Adding Firefox geckodriver to path temporarily.
 # Works in Linux 64 bit only for now.
 import set_geckodriver_path
 set_geckodriver_path.add_geckodriver_to_PATH()
@@ -30,7 +30,7 @@ As of now, it allows you to enter username/email, password, and OTP sent from
 your phone using the command line, then the report will be generated.
 
 Warning: Using it multiple times consecutively will block your account by a certain minutes. 
-This is a security feature in Shopee when you try to send OTP too many times.
+This is a security feature in Shopee PH when you try to send OTP too many times.
 
 Disclaimer:
 I do not save any personal info you will enter in this program. I just used the 3rd party 
@@ -46,7 +46,10 @@ Loading please wait...
 def login(username_email, password, driver):
     """
     This function accepts email or username and and password along 
-    with the selenium driver. Returns true if login is success.
+    with the selenium driver. It expects that the driver already
+    opens shopee.ph
+    
+    Returns true if login is success.
     False otherwise. This will only login to see the page mobile
     verification.
     """
@@ -59,7 +62,7 @@ def login(username_email, password, driver):
     driver.find_element_by_name("loginKey").send_keys(username_email)
     driver.find_element_by_name("password").send_keys(password)
 
-    # Wait until login element with a specific class value appears.
+    # Wait until login element with a specific class value is clickable.
     # Using XPATH format:
     # "//element_name[@atteibute_name=value]" 
     # Example: <button class="_35rr5y _32qX4k _1ShBrl _3z3XZ9 _2iOIqx _2h_2_Y"
@@ -161,10 +164,10 @@ def main():
 
         flush_stdin()
 
-        print("Enter your email address or username:")
+        print("Enter your email address or username: ")
         username_email = input("> ")
 
-        print("Enter your password (it won't appear in the terminal):")
+        print("Enter your password (it won't appear in the terminal): ")
         password = getpass.getpass("> ")
 
         # Login to Shopee.
