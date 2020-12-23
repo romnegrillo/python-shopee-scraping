@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 
+# Imports specifics using Firefox web driver.
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
+
+# Imports for general selenium functionality.
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+
 import time
 import getpass
 import datetime
