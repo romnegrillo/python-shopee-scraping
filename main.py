@@ -27,7 +27,7 @@ import generate_report
 message = """
 About:
 This program will generate a PDF report of all the items you bought in Shopee,
-including its name and price in tablular format, and the total money you spent 
+including its name and price in tabular format, and the total money you spent 
 in the platform.
 
 As of now, it allows you to enter username/email, password, and OTP sent from 
@@ -44,7 +44,10 @@ face when using this script. I tested this using my own Shopee account.
 Rom Negrillo
 github.com/romnegrillo
 
-Loading please wait...
+Loading please wait
+
+...
+
 """
 
 def login(username_email, password, driver):
