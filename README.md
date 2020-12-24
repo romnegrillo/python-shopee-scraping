@@ -37,7 +37,7 @@ As of now, it is only available in Linux and Windows.
 
 ***For Windows:***
 
-* Download the file  for Windows in the "Release" link at the right of this page, or click [here](#).
+* Download the file  for Windows in the "Release" link at the right of this page, or click [here](https://github.com/romnegrillo/Python-Shopee-Scraping/releases).
 * Unzip the file.
 * Open the unzipped folder then open the folder named "main".
 * Find the file named "main.exe" and double click it.
