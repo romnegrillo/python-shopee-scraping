@@ -15,6 +15,7 @@ import getpass
 import datetime
 import os
 import sys
+import platform
 
 # Adding Firefox geckodriver to path temporarily.
 # Works in Linux 64 bit only for now.
@@ -135,16 +136,19 @@ def save_webpage(driver, file_name):
 
     html_contents = driver.page_source
 
-    with open(file_name, "w") as f:
+    with open(file_name, "w", encoding = "utf8") as f:
         f.write(html_contents)
 
 
 def clear_screen():
-    """
-    Prints newline 100 times to behave like a clear screen.
-    """
-    print(100*"\n")
-    os.system("clear")
+
+    os_type = platform.system()
+
+    if os_type == "Linux":
+        os.system("clear")
+    elif os_type == "Linux":
+        os.system("cls")
+    
 
 def flush_stdin():
     # TODO
@@ -181,6 +185,7 @@ def main():
         if login(username_email, password, driver):
             
             # If login success, mobile verification is required.
+            print("OTP sent in your mobile number, please wait for it to be received.")
             print("Enter verification code sent in your mobile number:")
             mobile_verification_number = input("> ")
 
@@ -206,6 +211,7 @@ def main():
             time.sleep(1)
             webpage_save_name = "webpage_contents.html"
             save_webpage(driver, webpage_save_name)
+            print("Web page saved as {}".format(webpage_save_name))
 
             # Get dictionary of items we bought in Shopee in the format:
             # { 1: {"name": "Sample Name", "price": 100}, 2: {"name": "Sample Name", "price": 100} ...}
@@ -224,8 +230,12 @@ def main():
             desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
             folder_path = os.path.join(desktop_path, "generated_reports")
 
+            # Check if "generated_reports" folder exists on Desktop.
+            # Create if it doesn't.
+            print("Checking if path {} exists.".format(folder_path))
             if not os.path.exists(folder_path):
-                os.mkdir(folder_path)
+                print("Creating folder {}".format(folder_path))
+                os.makedirs(folder_path)
 
             # Modify file_name variable to be absolute file path. 
             file_name = os.path.join(folder_path, file_name)

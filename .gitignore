@@ -3,3 +3,5 @@ generated_reports/*
 *.log
 *.pdf
 release
+build
+dist

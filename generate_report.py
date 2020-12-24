@@ -7,9 +7,9 @@ from reportlab.lib import colors
 from reportlab.lib.units import inch
 
 
-def generate_report_from_dict(flename, title, description, contents_dict):
+def generate_report_from_dict(filename, title, description, contents_dict):
     
-    report = SimpleDocTemplate(flename, pagesize=letter)
+    report = SimpleDocTemplate(filename, pagesize=letter)
     flow_tables = []
     styles = getSampleStyleSheet()
  
