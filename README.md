@@ -23,14 +23,34 @@ any trouble you may face when using this script. I tested this using my own
 Shopee account. 
 
 ### How to Use 
-As of now, it is only available in Linux. Download the file in the "Release"
-link at the right of this page. Then follow the steps below:
+As of now, it is only available in Linux and Windows. 
+
+For Linux:
+
+* Download the file for Linux in the "Release" link at the right of this page, or click [here](#).
 * Unzip the file.
 * Open terminal.
 * Change directory to unzipped folder then the folder named "main" inside it.
 * Example if you're in Downloads directory: ```cd ~/Downloads/python-shopee-scraping-linux/main```
 * Run using the command ```./main```
+* A command line interface will open that will ask for the needed information.
+
+For Windows:
+
+* Download the file  for Windows in the "Release" link at the right of this page, or click [here](#).
+* Unzip the file.
+* Open the unzipped folder then open the folder named "main".
+* Find the file named "main.exe" and double click it.
+* A command line interface will open that will ask for the needed information.
 
 The program will then ask for your email/username, password and OTP sent in your
 mobile then the report will generated on a folder named "reports_generated" on 
 a folder named "generated_reports" on your Desktop.
+
+For Linux:
+
+```/home/username/Desktop/generated_reports```
+
+For Windows:
+
+```C:\Users\username\Desktop```
