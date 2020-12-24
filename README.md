@@ -25,7 +25,7 @@ Shopee account.
 ### How to Use 
 As of now, it is only available in Linux and Windows. 
 
-For Linux:
+***For Linux:***
 
 * Download the file for Linux in the "Release" link at the right of this page, or click [here](#).
 * Unzip the file.
@@ -35,7 +35,7 @@ For Linux:
 * Run using the command ```./main```
 * A command line interface will open that will ask for the needed information.
 
-For Windows:
+***For Windows:***
 
 * Download the file  for Windows in the "Release" link at the right of this page, or click [here](#).
 * Unzip the file.
@@ -53,4 +53,4 @@ For Linux:
 
 For Windows:
 
-```C:\Users\username\Desktop```
+```C:\Users\username\Desktop\generated_reports```
