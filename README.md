@@ -27,7 +27,7 @@ As of now, it is only available in Linux and Windows.
 
 ***For Linux:***
 
-* Download the file for Linux in the "Release" link at the right of this page, or click [here](#).
+* Download the file for Linux in the "Release" link at the right of this page, or click [here](https://github.com/romnegrillo/Python-Shopee-Scraping/releases).
 * Unzip the file.
 * Open terminal.
 * Change directory to unzipped folder then the folder named "main" inside it.
