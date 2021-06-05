@@ -47,10 +47,10 @@ The program will then ask for your email/username, password and OTP sent in your
 mobile then the report will generated on a folder named "reports_generated" on 
 a folder named "generated_reports" on your Desktop.
 
-For Linux:
+Output directory for Linux:
 
 ```/home/username/Desktop/generated_reports```
 
-For Windows:
+Output directory for Windows:
 
 ```C:\Users\username\Desktop\generated_reports```

@@ -1,5 +1,5 @@
-import reportlab
-from reportlab.lib.enums import TA_JUSTIFY
+#!/usr/bin/python3
+
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -8,6 +8,12 @@ from reportlab.lib.units import inch
 
 
 def generate_report_from_dict(filename, title, description, contents_dict):
+    """
+    This function accepts a string of filename, title, description and
+    a list of dictionary containing keys "name" and "price" and it
+    generates a PDF file containing a table of those dictionary along
+    with the other parameters at the head of the pdf file.
+    """
     
     report = SimpleDocTemplate(filename, pagesize=letter)
     flow_tables = []

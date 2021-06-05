@@ -32,7 +32,7 @@ including its name and price in tabular format, and the total money you spent
 in the platform.
 
 As of now, it allows you to enter username/email, password, and OTP sent from 
-your phone using the command line, then the report will be generated.
+your phone using the command line, then the PDF report will be generated.
 
 Warning: Using it multiple times consecutively will block your account by a certain minutes. 
 This is a security feature in Shopee PH when you try to send OTP too many times.
@@ -74,10 +74,10 @@ def login(username_email, password, driver):
     # Using XPATH format:
     # "//element_name[@atteibute_name=value]" 
     # Example: <button class="_35rr5y _32qX4k _1ShBrl _3z3XZ9 _2iOIqx _2h_2_Y"
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='_35rr5y _32qX4k _1ShBrl _3z3XZ9 _2iOIqx _2h_2_Y']")))
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='_1ruZ5a _3Nrkgj _3kANJY _1IRuK_ hh2rFL _3_offS']")))
 
     # If the button exists, we click it. This emulates login button with the values we provided.
-    driver.find_element_by_xpath("//button[@class='_35rr5y _32qX4k _1ShBrl _3z3XZ9 _2iOIqx _2h_2_Y']").click()
+    driver.find_element_by_xpath("//button[@class='_1ruZ5a _3Nrkgj _3kANJY _1IRuK_ hh2rFL _3_offS']").click()
 
     # The page will load. The element with attribute name "autocomplete" and value "one-time-code" should appear.
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//input[@autocomplete="one-time-code"]')))
@@ -104,8 +104,8 @@ def mobile_verification(mobile_verification_number, driver):
     driver.find_element_by_xpath('//input[@autocomplete="one-time-code"]').send_keys(mobile_verification_number)
 
     # Wait for the verification button to appear then perform submit action.
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//button[@class='_35rr5y _32qX4k _1ShBrl _3z3XZ9 pukiJQ _2iOIqx _2h_2_Y']")))    
-    driver.find_element_by_xpath("//button[@class='_35rr5y _32qX4k _1ShBrl _3z3XZ9 pukiJQ _2iOIqx _2h_2_Y']").click()
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//button[@class='_1ruZ5a _3Nrkgj _3kANJY _1IRuK_ X27k2C hh2rFL _3_offS']")))    
+    driver.find_element_by_xpath("//button[@class='_1ruZ5a _3Nrkgj _3kANJY _1IRuK_ X27k2C hh2rFL _3_offS']").click()
  
 
 def scroll_down_until_end(driver):
@@ -144,16 +144,11 @@ def clear_screen():
 
     os_type = platform.system()
 
-    if os_type == "Linux":
-        os.system("clear")
-    elif os_type == "Linux":
+    if os_type == "Windows":
+        os.system("cls")
+    else:
         os.system("cls")
     
-
-def flush_stdin():
-    # TODO
-    pass
-
 def main():
 
     clear_screen()
@@ -162,7 +157,7 @@ def main():
 
     # Creates an option for how the browser behaves. 
     opts = Options()
-    opts.headless = True
+    #opts.headless = True
     #assert opts.headless   
     
     # Creates firefox webdriver.
