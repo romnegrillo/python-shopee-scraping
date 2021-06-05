@@ -1,5 +1,7 @@
 # Python Shopee Scraping
 
+![Shopee-Logo](/shopee_logo.png?raw=true)
+
 ### About
 Updated as of 2021/06/06 since I constantly use this script to track my spending
 on Shopee.
