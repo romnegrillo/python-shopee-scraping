@@ -1,6 +1,9 @@
 # Python Shopee Scraping
 
 ### About
+Updated as of 2021/06/06 since I constantly use this script to track my spending
+on Shopee.
+
 This repository contains Python automation programs to web scrape shopee.ph 
 and gather information about the items you purchased in your Shopee account. 
 Note, the link is  shopee.ph. I have not tested it in another shopee website
@@ -24,33 +27,30 @@ Shopee account.
 
 ### How to Use 
 As of now, it is only available in Linux and Windows. 
+You need the following installed:
+* python3 (python2 won't work)
+* pip
+* firefox browser
 
-***For Linux:***
+Then you need to install the requirements.txt in the terminal. Navigate to
+this directory when you download it then type:
+```pip install -r requirements.txt```
+or you configured your system to use pip3 command then:
+```pip3 install -r requirements.txt```
 
-* Download the file for Linux in the "Release" link at the right of this page, or click [here](https://github.com/romnegrillo/Python-Shopee-Scraping/releases).
-* Unzip the file.
-* Open terminal.
-* Change directory to unzipped folder then the folder named "main" inside it.
-* Example if you're in Downloads directory: ```cd ~/Downloads/python-shopee-scraping-linux/main```
-* Run using the command ```./main```
-* A command line interface will open that will ask for the needed information.
+Then simpy run the main.py script by typing in the terminal:
+```python main.py```
+or if you configured your system to use python3 command then:
+```python3 main.py```
 
-***For Windows:***
+The program will ask for the usrname/email, password. Then if you logged in
+successfully, it will send and OTP to your phone and the program will request 
+it. Wait a little bit then the report will be generated.
 
-* Download the file  for Windows in the "Release" link at the right of this page, or click [here](https://github.com/romnegrillo/Python-Shopee-Scraping/releases).
-* Unzip the file.
-* Open the unzipped folder then open the folder named "main".
-* Find the file named "main.exe" and double click it.
-* A command line interface will open that will ask for the needed information.
-
-The program will then ask for your email/username, password and OTP sent in your
-mobile then the report will generated on a folder named "reports_generated" on 
-a folder named "generated_reports" on your Desktop.
-
-Output directory for Linux:
+Output directory of PDF file for Linux:
 
 ```/home/username/Desktop/generated_reports```
 
-Output directory for Windows:
+Output directory of PDF file for Windows:
 
 ```C:\Users\username\Desktop\generated_reports```
