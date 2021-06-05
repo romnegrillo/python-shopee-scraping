@@ -168,8 +168,6 @@ def main():
 
     try:
 
-        flush_stdin()
-
         print("Enter your email address or username: ")
         username_email = input("> ")
 
