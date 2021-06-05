@@ -147,7 +147,7 @@ def clear_screen():
     if os_type == "Windows":
         os.system("cls")
     else:
-        os.system("cls")
+        os.system("clear")
     
 def main():
 
