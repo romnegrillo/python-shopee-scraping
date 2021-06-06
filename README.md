@@ -45,9 +45,8 @@ Then simpy run the main.py script by typing in the terminal:
 or if you configured your system to use python3 command then:
 ```python3 main.py```
 
-The program will ask for the usrname/email, password. Then if you logged in
-successfully, it will send and OTP to your phone and the program will request 
-it. Wait a little bit then the report will be generated.
+The program will ask for the username/email, password. Then if you logged in
+successfully, it will send and OTP to your phone and the program will request it. Wait a little bit then the report will be generated.
 
 Output directory of PDF file for Linux:
 
@@ -56,3 +55,8 @@ Output directory of PDF file for Linux:
 Output directory of PDF file for Windows:
 
 ```C:\Users\username\Desktop\generated_reports```
+
+### Sample Outpus
+
+![sample_output_1](/sample_output_1.png?raw=true)
+![sample_output_2](/sample_output_2.png?raw=true)

@@ -157,7 +157,7 @@ def main():
 
     # Creates an option for how the browser behaves. 
     opts = Options()
-    #opts.headless = True
+    opts.headless = True
     #assert opts.headless   
     
     # Creates firefox webdriver.
