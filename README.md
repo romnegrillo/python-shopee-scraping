@@ -36,13 +36,19 @@ You need the following installed:
 
 Then you need to install the requirements.txt in the terminal. Navigate to
 this directory when you download it then type:
+
 ```pip install -r requirements.txt```
+
 or you configured your system to use pip3 command then:
+
 ```pip3 install -r requirements.txt```
 
 Then simpy run the main.py script by typing in the terminal:
+
 ```python main.py```
+
 or if you configured your system to use python3 command then:
+
 ```python3 main.py```
 
 The program will ask for the username/email, password. Then if you logged in
